@@ -1,14 +1,16 @@
 import web
+import os
 
 urls = (
-	'/','index'
+'/','index',
+)
+root = os.path.dirname(__file__)
+render = web.template.render(os.path.join(root, 'templates/'),cache=False
 )
 
 class index:
 	def GET(self):
-		return "Hello World!"
+		return render.index()
 
-if __name__ == "__main__":
-	app = web.application(urls, globals())
-	app.run()
-
+app = web.application(urls, globals())
+application = app.wsgifunc()
